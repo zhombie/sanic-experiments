@@ -1,6 +1,6 @@
 def build_api_blueprint():
     from server.api.staff import build_staff_blueprint
-    from server.core.engine import APIRoute
+    from server.core.web.engine.route import APIRoute
 
     return APIRoute.group(
         build_staff_blueprint(),

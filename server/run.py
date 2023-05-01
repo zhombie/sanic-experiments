@@ -2,7 +2,8 @@ from orjson import dumps
 
 from api import build_api_blueprint
 from api.home import build_home_blueprint
-from core.engine import APIRequest, App
+from core.web.engine.app import App
+from core.web.engine.request import APIRequest
 
 app = App(
     'sample',

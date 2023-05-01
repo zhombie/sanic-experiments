@@ -1,12 +1,13 @@
 from functools import wraps
 
-from server.core.engine import APIRequest, APIResponse
+from core.web.engine.request import APIRequest
+from core.web.engine.response import APIResponse
 
 
 def on_api_request(func):
     @wraps(func)
     async def wrapper(request: APIRequest, *args, **kwargs) -> APIResponse:
-        print(func, request, args, kwargs)
+        print('on_api_request() ->', func, request, args, kwargs)
 
         body = {
             'meta': {

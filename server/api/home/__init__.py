@@ -1,6 +1,6 @@
 def build_home_blueprint():
     from server.api.home.index import HomeAPIView
-    from server.core.engine import APIRoute
+    from server.core.web.engine.route import APIRoute
 
     route = APIRoute('home', url_prefix='/')
 
