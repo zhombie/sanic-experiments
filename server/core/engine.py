@@ -1,4 +1,4 @@
-from sanic import Blueprint, HTTPResponse, Sanic, json
+from sanic import Blueprint, HTTPResponse, Sanic, empty, json
 from sanic.blueprint_group import BlueprintGroup
 from sanic.views import HTTPMethodView
 from sanic_ext import CountedRequest
@@ -9,7 +9,11 @@ class App(Sanic):
 
 
 class APIView(HTTPMethodView):
-    pass
+
+    # noinspection PyUnusedLocal
+    @classmethod
+    async def options(cls, _, *args, **kwargs):
+        return empty()
 
 
 class APIRoute(Blueprint):

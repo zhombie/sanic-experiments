@@ -1,6 +1,6 @@
 from functools import wraps
 
-from core.engine import APIRequest, APIResponse
+from server.core.engine import APIRequest, APIResponse
 
 
 def on_api_request(func):

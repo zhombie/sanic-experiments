@@ -13,3 +13,15 @@ class EmployeesAPIView(BaseAPIView):
                 'patronymic': 'Yellowstone'
             }
         ]
+
+    async def post(self, request):
+        pass
+
+    async def patch(self, request):
+        pass
+
+    async def put(self, request):
+        pass
+
+    async def delete(self, request):
+        pass
