@@ -11,5 +11,8 @@ class APIRequest(CountedRequest):
             'method': self.method,
             'url': self.url,
             'headers': {k: v for k, v in self.headers.items()},
-            'count': self.count
+            'count': self.count,
+            'args': self.args,
+            'json': self.json,
+            'form': self.form
         }
