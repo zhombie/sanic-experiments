@@ -4,9 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+asyncpg = "*"
+orjson = "*"
+python-dotenv = "*"
 sanic = "*"
 sanic-ext = "*"
-orjson = "*"
 
 [requires]
 python_version = "3"

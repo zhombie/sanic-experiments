@@ -1,6 +1,8 @@
 from orjson import dumps
 
+import settings
 from api import build_api_blueprint
+from core.db.db import db
 from core.web.engine.app import App
 from core.web.engine.request import APIRequest
 
@@ -12,6 +14,25 @@ app = App(
 
 app.config.DEBUG = False
 app.config.FALLBACK_ERROR_FORMAT = 'json'
+
+
+@app.before_server_start
+async def before_server_start(_app, _loop):
+    await db.connect(
+        host=settings.DATABASE_HOST,
+        port=settings.DATABASE_PORT,
+        user=settings.DATABASE_USER,
+        password=settings.DATABASE_PASSWORD,
+        database=settings.DATABASE_NAME,
+        min_size=1,
+        max_size=10
+    )
+
+
+@app.before_server_stop
+async def before_server_stop(_app, _loop):
+    await db.disconnect()
+
 
 app.blueprint(build_api_blueprint())
 

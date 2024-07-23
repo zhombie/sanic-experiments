@@ -7,3 +7,6 @@ __pycache__/
 
 # pipenv
 Pipfile.lock
+
+# Environment variable
+.env
