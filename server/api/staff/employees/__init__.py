@@ -1,6 +1,6 @@
 def build_staff_employees_blueprint():
-    from server.api.staff.employees.list import EmployeesAPIView
-    from server.core.web.engine.route import APIRoute
+    from api.staff.employees.list import EmployeesAPIView
+    from core.web.engine.route import APIRoute
 
     route = APIRoute('staff-employees', url_prefix='/employees')
 

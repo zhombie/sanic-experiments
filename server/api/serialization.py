@@ -1,7 +1,7 @@
+import time
 import traceback
 from functools import wraps
 
-from core.web.engine.exception import BadRequest
 from core.web.engine.request import APIRequest
 from core.web.engine.response import APIResponse
 
@@ -11,18 +11,34 @@ def on_api_request(func):
     async def wrapper(request: APIRequest, *args, **kwargs) -> APIResponse:
         print('on_api_request() ->', func, request, args, kwargs)
 
+        a = time.perf_counter()
+
         try:
-            response = await func(request, *args, **kwargs)
-        except Exception as e:
+            d = await func(request, *args, **kwargs)
+        except Exception as exc:
             traceback.print_exc()
-            raise BadRequest(message=str(e))
+
+            k = False
+            d = {}
+            e = {
+                'c': exc.__class__.__name__,
+                'm': str(exc)
+            }
+        else:
+            k = True
+            e = {}
+
+        b = time.perf_counter()
 
         return APIResponse.json(
             {
-                'meta': {
-                    'request': request.to_dict()
+                'm': {
+                    'r': request.to_dict(),
+                    'd': (b - a) * 1000
                 },
-                'data': response
+                'k': k,
+                'd': d,
+                'e': e
             },
             status=kwargs.get('status', 200)
         )

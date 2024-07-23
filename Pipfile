@@ -8,7 +8,5 @@ sanic = "*"
 sanic-ext = "*"
 orjson = "*"
 
-[dev-packages]
-
 [requires]
 python_version = "3"

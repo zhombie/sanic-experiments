@@ -1,4 +1,4 @@
-from server.api.base import BaseAPIView
+from api.base import BaseAPIView
 
 
 class HomeAPIView(BaseAPIView):

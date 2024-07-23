@@ -3,8 +3,8 @@ from typing import Optional
 
 from sanic_ext import validate
 
+from api.base import BaseAPIView
 from api.validation import is_valid_str
-from server.api.base import BaseAPIView
 
 
 @dataclass
