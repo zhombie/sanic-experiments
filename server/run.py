@@ -10,6 +10,9 @@ app = App(
     request_class=APIRequest
 )
 
+app.config.DEBUG = False
+app.config.FALLBACK_ERROR_FORMAT = 'json'
+
 app.blueprint(build_api_blueprint())
 
 if __name__ == '__main__':

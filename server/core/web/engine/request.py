@@ -7,12 +7,13 @@ class APIRequest(CountedRequest):
 
     def to_dict(self):
         return {
-            'id': str(self.id),
-            'method': self.method,
-            'url': self.url,
-            # 'headers': {k: v for k, v in self.headers.items()},
-            'count': self.count,
-            # 'args': self.args,
-            # 'json': self.json,
-            # 'form': self.form
+            'i': str(self.id),
+            'm': self.method,
+            'u': self.url,
+            'c': self.count,
+
+            # 'h': {k: v for k, v in self.headers.items()},
+            # 'a': self.args,
+            # 'j': self.json,
+            # 'f': self.form
         }

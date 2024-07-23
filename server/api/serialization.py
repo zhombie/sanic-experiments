@@ -22,7 +22,8 @@ def on_api_request(func):
             d = {}
             e = {
                 'c': exc.__class__.__name__,
-                'm': str(exc)
+                'm': str(exc),
+                'x': getattr(exc, 'context') or {} if hasattr(exc, 'context') else {}
             }
         else:
             k = True
@@ -34,7 +35,7 @@ def on_api_request(func):
             {
                 'm': {
                     'r': request.to_dict(),
-                    'd': (b - a) * 1000
+                    't': (b - a) * 1000
                 },
                 'k': k,
                 'd': d,
