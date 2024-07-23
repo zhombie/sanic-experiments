@@ -27,7 +27,8 @@ class EmployeeCreateParams:
 
 class EmployeesAPIView(BaseAPIView):
 
-    async def get(self, _):
+    @classmethod
+    async def get(cls, _):
         print('EmployeesAPIView#get()')
         return [
             {

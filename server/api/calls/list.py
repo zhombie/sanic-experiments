@@ -4,6 +4,11 @@ from di.di import di
 
 class CallsAPIView(BaseAPIView):
 
-    async def get(self, _):
+    @classmethod
+    async def get(cls, _) -> dict:
         calls = await di.calls_repository.get_calls()
-        return calls
+        count = await di.calls_repository.get_calls_count()
+        return {
+            'calls': calls,
+            'count': count
+        }

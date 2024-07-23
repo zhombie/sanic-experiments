@@ -3,5 +3,6 @@ from api.base import BaseAPIView
 
 class HomeAPIView(BaseAPIView):
 
-    async def get(self, _):
+    @classmethod
+    async def get(cls, _):
         return 'Hello, World!'
